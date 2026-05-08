@@ -1,42 +1,79 @@
-# Flutter Weather App (Lab 4) 🌤️
+Flutter Weather Application – Lab 4
+👨‍🎓 Thông Tin Sinh Viên
+Họ và tên: Hồ LÊ Hữu Kiên
+MSSV: 2224802010285
+🎬 Video Demo & Thuyết Trình
 
-**Sinh viên thực hiện:** Nguyễn Thanh Liêm  
-**Mã số sinh viên:** 2224802010267  
+🔗 Link Drive báo cáo:
+Xem Video Demo
 
----
+Video bao gồm phần giới thiệu cấu trúc project, giải thích source code và demo các chức năng chính của ứng dụng khi chạy trên thiết bị thực tế.
 
-## 📹 Video Báo Cáo (Demo Video)
-👉 **Link Video Thuyết Trình:** **[Xem Video Demo Tại Đây](https://drive.google.com/file/d/1vzaCh2iZp3950lvUAFSai-jkbfC1X6bu/view?usp=sharing)**
-*(Kính mời cô nhấn vào đường link trên để xem chi tiết phần thuyết trình cấu trúc code và demo chức năng chạy trên thiết bị thực tế của em ạ)*
+📱 Tổng Quan Dự Án
 
----
+Ứng dụng Flutter Weather App được xây dựng nhằm phục vụ yêu cầu của bài Lab 4 với mục tiêu tạo ra một ứng dụng dự báo thời tiết hiện đại, trực quan và hoạt động ổn định trên nền tảng Flutter.
 
-## 📖 Giới thiệu (Introduction)
-Dự án Weather Application được phát triển bằng Flutter nhằm đáp ứng đầy đủ các yêu cầu của bài Lab 4. Ứng dụng cung cấp tính năng dự báo thời tiết theo thời gian thực sử dụng API từ **OpenWeatherMap**, có hỗ trợ định vị GPS và lưu đệm dữ liệu Offline.
+Ứng dụng sử dụng dữ liệu thời tiết thời gian thực thông qua API từ OpenWeatherMap, đồng thời hỗ trợ:
 
-## 📂 Cấu trúc thư mục (Project Structure)
-Dự án được tổ chức và triển khai theo mô hình State Management bằng `Provider` để tách biệt Logic và UI:
-- `lib/models/`: Định nghĩa các lớp parse dữ liệu JSON (WeatherModel).
-- `lib/services/`: Chứa các service xử lý tác vụ ngoại vi:
-  - `weather_service.dart`: Xử lý logic gọi REST API.
-  - `location_service.dart`: Xin quyền và lấy tọa độ GPS từ thiết bị.
-  - `storage_service.dart`: Lưu trữ cache offline bằng Shared Preferences.
-- `lib/providers/`: Nơi xử lý trạng thái (State) tập trung (`WeatherProvider`).
-- `lib/screens/`: Các màn hình giao diện (HomeScreen, SearchScreen).
-- `lib/widgets/`: Các thành phần giao diện được chia nhỏ (CurrentWeatherCard, HourlyForecast, ...).
+Lấy vị trí hiện tại bằng GPS
+Hiển thị thông tin thời tiết theo khu vực
+Cache dữ liệu offline
+Tối ưu trải nghiệm người dùng khi mất kết nối mạng
+🗂️ Kiến Trúc & Tổ Chức Source Code
 
-## 🛠 Thư viện sử dụng (Dependencies)
-- **[provider]**: Xử lý State Management mượt mà, hạn chế build lại toàn bộ UI.
-- **[http]**: Gửi các phương thức GET request tới Server OpenWeatherMap.
-- **[geolocator] & [geocoding]**: Cấp quyền định vị và trích xuất tọa độ hiện tại.
-- **[shared_preferences]**: Chức năng Local Caching để ứng dụng vẫn hiển thị dữ liệu cũ khi mất kết nối mạng.
-- **[flutter_dotenv]**: Đọc biến môi trường, dùng để bảo mật giấu kín API Key (tránh đưa lên Github).
+Project được chia thành nhiều module riêng biệt để dễ quản lý và mở rộng:
 
-## 🚀 Hướng dẫn khởi chạy (How to Run)
-Để bảo mật, API Key không được đưa lên Github. Xin vui lòng làm theo các bước sau để chạy App:
-1. Đảm bảo máy đã cài đặt Flutter SDK và clone repo này về.
-2. Ở thư mục gốc của dự án, đổi tên file `.env.example` thành `.env`.
-3. Thay thế dòng chữ trong file `.env` bằng API Key thật của OpenWeatherMap:
-   `OPENWEATHER_API_KEY=your_actual_key`
-4. Chạy lệnh `flutter pub get` để tải các thư viện.
-5. Chạy ứng dụng bằng lệnh: `flutter run`
+lib/models/
+
+Chứa các model dùng để ánh xạ dữ liệu JSON từ API sang object Dart.
+
+lib/services/
+
+Xử lý các tác vụ liên quan đến dữ liệu và hệ thống:
+
+weather_service.dart → Gọi API thời tiết
+location_service.dart → Lấy tọa độ GPS và xin quyền truy cập vị trí
+storage_service.dart → Lưu cache bằng SharedPreferences
+lib/providers/
+
+Quản lý trạng thái ứng dụng bằng Provider giúp UI cập nhật dữ liệu linh hoạt.
+
+lib/screens/
+
+Chứa các màn hình chính:
+
+Home Screen
+Search Screen
+Forecast Screen
+lib/widgets/
+
+Bao gồm các widget tái sử dụng:
+
+Current Weather Card
+Hourly Forecast
+Weather Detail Item
+Search Bar
+...
+📦 Các Package Được Sử Dụng
+
+Một số thư viện chính được tích hợp trong project:
+
+provider → Quản lý state hiệu quả
+http → Kết nối và lấy dữ liệu từ REST API
+geolocator & geocoding → Hỗ trợ GPS và xử lý địa chỉ
+shared_preferences → Lưu dữ liệu cục bộ
+flutter_dotenv → Ẩn API Key và tăng tính bảo mật khi upload source code
+⚙️ Hướng Dẫn Chạy Ứng Dụng
+
+Để chạy project thành công, thực hiện các bước sau:
+
+Clone source code về máy
+Đảm bảo đã cài Flutter SDK
+Đổi tên file:
+.env.example ➜ .env
+Thêm API Key vào file .env:
+OPENWEATHER_API_KEY=186fe3b5f726d7ea6086929a26a9af0c
+Cài dependencies:
+flutter pub get
+Khởi chạy ứng dụng:
+flutter run
