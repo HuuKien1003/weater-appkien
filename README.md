@@ -5,7 +5,7 @@ MSSV: 2224802010285
 🎬 Video Demo & Thuyết Trình
 
 🔗 Link Drive báo cáo:
-Xem Video Demo
+[Xem Video Demo](https://drive.google.com/file/d/169PpRLzPqp4H9CTu3qAigvkEoQn8p8yH/view?usp=drive_link)
 
 Video bao gồm phần giới thiệu cấu trúc project, giải thích source code và demo các chức năng chính của ứng dụng khi chạy trên thiết bị thực tế.
 
